@@ -9,13 +9,13 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/hooks/useAuth';
 
-// Enhanced email validation regex
+// emailregex
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-// Password validation - at least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+// Password regex - at least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#^])[A-Za-z\d@$!%*?&_#^]{8,}$/;
 
-// Zod validation schema
+// Zod-schema for the validation
 const signUpSchema = z
   .object({
     name: z
@@ -33,7 +33,7 @@ const signUpSchema = z
       .min(1, 'Password is required')
       .regex(
         passwordRegex,
-        'Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character (@$!%*?&)'
+        'Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character (@$!%*?&_#^)'
       ),
     confirmPassword: z.string().min(1, 'Please confirm your password'),
     termsAccepted: z.boolean().refine((val: boolean) => val === true, {
@@ -128,7 +128,7 @@ export default function SignUp() {
                 </p>
               )}
               <p className="text-xs text-gray-500">
-                Must be at least 8 characters with uppercase, lowercase, number, and special character.
+                Must be at least 8 characters with uppercase, lowercase, number, and special character (@$!%*?&_#^).
               </p>
             </div>
             <div className="space-y-2">
