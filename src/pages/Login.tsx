@@ -83,7 +83,7 @@ export default function Login() {
     },
   });
 
-  // Handle Sign In submission
+  // Sign In form storing
   const onSignInSubmit = (data: SignInFormData) => {
     console.log('Sign In Form Data Object:', data);
     signIn.mutate(data, {
@@ -93,7 +93,7 @@ export default function Login() {
     });
   };
 
-  // Handle Sign Up submission
+  // signup form storing
   const onSignUpSubmit = (data: SignUpFormData) => {
     console.log('Sign Up Form Data Object:', data);
     signUp.mutate(data, {

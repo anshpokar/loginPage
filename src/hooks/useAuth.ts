@@ -8,7 +8,7 @@ export const useAuth = () => {
     mutationFn: signIn,
     onSuccess: (data) => {
       console.log('Sign In Success - Response Object:', data);
-      // Store token in localStorage or cookies
+      // store token => local storage
       localStorage.setItem('token', data.token);
       alert(`Welcome back, ${data.user.name}! Sign in successful.`);
     },
@@ -22,7 +22,7 @@ export const useAuth = () => {
     mutationFn: signUp,
     onSuccess: (data) => {
       console.log('Sign Up Success - Response Object:', data);
-      // Store token in localStorage or cookies
+      // localstorage
       localStorage.setItem('token', data.token);
       alert(`Welcome, ${data.user.name}! Your account has been created successfully.`);
     },
